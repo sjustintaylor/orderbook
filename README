@@ -1,0 +1,39 @@
+# Orderbook
+
+## Features
+
+- Add, cancel, and execute buy/sell orders
+- Execute orders first in order of best price, and then by order age ascending (oldest first)
+- Execute operations in a performant manner
+- Be durable in the event of server crash
+- Accessible via a simple RESTful api secured via API key
+
+## Specs
+
+- Express api
+- MongoDB
+
+## Mongo schema
+
+```typescript
+interface Order {
+  id: number;
+  asset_code: number;
+  type: "BUY" | "SELL";
+  price: number;
+  amount: number;
+  status: "OPEN" | "CANCELLED" | "FILLED" | "PARTIAL";
+  timestamp: Date;
+}
+
+interface Asset {
+  asset_code: number;
+  asset_name: string;
+}
+
+interface OrderBook {
+  asset: Asset;
+  bid: number;
+  ask: number;
+}
+```
