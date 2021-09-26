@@ -1,3 +1,5 @@
+import express from "express";
+
 /**
  * Wraps async express route handlers to make them cleaner to write
  * @copyright Zell Liew, https://zellwk.com/blog/async-await-express/
@@ -6,12 +8,12 @@
  */
 function asyncHandler(
   callback: (
-    req: Express.Request,
-    res: Express.Response,
+    req: express.Request,
+    res: express.Response,
     next: () => any
   ) => any
 ) {
-  return (req: Express.Request, res: Express.Response, next: () => any) => {
+  return (req: express.Request, res: express.Response, next: () => any) => {
     callback(req, res, next).catch(next);
   };
 }

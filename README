@@ -4,7 +4,6 @@
 
 - Add, cancel, and execute buy/sell orders
 - Execute orders first in order of best price, and then by order age ascending (oldest first)
-- Execute operations in a performant manner
 - Be durable in the event of server crash
 - Accessible via a simple RESTful api secured via API key
 
@@ -27,11 +26,12 @@ interface Order {
 }
 
 interface Asset {
-  asset_code: number;
+  id: number;
   asset_name: string;
 }
 
 interface OrderBook {
+  id: number;
   asset: Asset;
   bid: number;
   ask: number;
