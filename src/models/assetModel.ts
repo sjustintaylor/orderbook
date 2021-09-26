@@ -1,6 +1,6 @@
 import { getModelForClass, prop } from "@typegoose/typegoose";
 
-class Asset {
+export class Asset {
   @prop()
   public name: string;
 }

@@ -1,5 +1,5 @@
 import express from "express";
-import { getOrderbooks, getOrderbookByID } from "../handlers/orderbookHandlers";
+import { getOrderbooks } from "../handlers/orderbookHandlers";
 import asyncHandler from "../helpers/asyncHandler";
 
 const router = express.Router();

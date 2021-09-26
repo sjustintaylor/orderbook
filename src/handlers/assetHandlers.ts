@@ -2,6 +2,7 @@ import express from "express";
 import AssetModel from "../models/assetModel";
 import assetSchema from "../schemas/assetSchema";
 import createError from "http-errors";
+import OrderbookModel from "../models/orderbookModel";
 
 export const getAssets = async (
   req: express.Request,
@@ -17,6 +18,7 @@ export const createAsset = async (
 ) => {
   const { name } = await assetSchema(req.body);
   const asset = await AssetModel.create({ name });
+  await OrderbookModel.create({ asset, bid: 0, ask: 0 });
   res.status(200).json(asset);
 };
 

@@ -1,8 +1,6 @@
-import { prop } from "@typegoose/typegoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
 
-export default class Order {
-  @prop()
-  public id: number;
+class Order {
   @prop()
   assetCode: number;
   @prop()
@@ -16,3 +14,5 @@ export default class Order {
   @prop()
   timestamp: Date;
 }
+
+export default getModelForClass(Order);

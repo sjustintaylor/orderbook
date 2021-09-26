@@ -1,19 +1,14 @@
-import { prop } from "@typegoose/typegoose";
-import Asset from "./assetModel";
+import { getModelForClass, prop, Ref } from "@typegoose/typegoose";
+import { Asset } from "./assetModel";
 
-export default class Orderbook {
-  @prop()
-  public id: number;
-
-  @prop()
-  public name?: string;
-
-  @prop()
-  asset: Asset;
-
+class Orderbook {
+  @prop({ ref: () => Asset })
+  public asset: Ref<Asset>;
   @prop()
   bid?: number;
 
   @prop()
   ask?: number;
 }
+
+export default getModelForClass(Orderbook);
