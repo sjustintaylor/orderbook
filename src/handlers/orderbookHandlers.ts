@@ -12,7 +12,7 @@ export const getOrderbooks = async (
   } else if (req?.query?.asset) {
     options.asset = { _id: req?.query?.asset as string };
   }
-  const orderbooks = await OrderbookModel.find(options);
+  const orderbooks = await OrderbookModel.find(options).populate("asset");
 
   res.status(200).json(orderbooks);
 };
